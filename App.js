@@ -7,6 +7,16 @@ import Login from './screens/Login';
 import { TamaguiProvider, Theme } from 'tamagui';
 
 export default function App() {
+  const [isThemeToggled, setIsThemeToggled] = useState(false);
+  
+  const handleThemeChange = (newTheme) => {
+    setIsThemeToggled(newTheme);
+    console.log(isThemeToggled);
+  };  
+
+  const themeName = isThemeToggled ? "dark_blue" : "light_blue";
+
+  /* Load Fonts */
   const [loaded] = useFonts({
     Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
     InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
@@ -15,12 +25,13 @@ export default function App() {
   if (!loaded) {
     return null;
   }
+  /*-----*/
 
   return (
     <TamaguiProvider config={config}>
-      <Theme name="light_blue">
+      <Theme name={themeName}>
         <View style={styles.container}>
-          <Login />
+          <Login isThemeToggled={isThemeToggled} onThemeChange={handleThemeChange} />
         </View>
       </Theme>
     </TamaguiProvider>
