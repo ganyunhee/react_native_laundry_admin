@@ -1,29 +1,36 @@
+import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
+import { useFonts } from 'expo-font';
 import { StyleSheet, Text, View } from 'react-native';
+import config from './tamagui.config';
+import Login from './screens/Login';
+import { TamaguiProvider, Theme } from 'tamagui';
 
 export default function App() {
+  const [loaded] = useFonts({
+    Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
+    InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
+  })
+
+  if (!loaded) {
+    return null;
+  }
+
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.boldText}>This will be a laundry app!</Text>
-      </View>
-      <StatusBar style="auto" />
-    </View>
+    <TamaguiProvider config={config}>
+      <Theme name="light_blue">
+        <View style={styles.container}>
+          <Login />
+        </View>
+      </Theme>
+    </TamaguiProvider>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  header: {
-    backgroundColor: "grey",
-    padding: 10
-  },
-  boldText: {
-    fontWeight: "bold",
-  }
 });
