@@ -3,6 +3,7 @@ module.exports = function(api) {
   return {
     presets: ['babel-preset-expo'],
     plugins: [
+      'expo-router/babel',
       // optional, only if you ever use process.env
       "transform-inline-environment-variables",
       // NOTE: this is optional, you don't *need* the compiler
