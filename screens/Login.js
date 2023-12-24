@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
-import { StyleSheet, Text, View } from 'react-native';
 import { XStack, YStack } from 'tamagui';
 import { Form, Input, Button, Switch, SizableText } from 'tamagui';
 import { H1, H2, H3, H4 } from 'tamagui';
