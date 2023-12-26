@@ -1,65 +1,71 @@
-import React from 'react';
+import React, { useMemo, useState } from 'react';
 import { useFonts } from 'expo-font';
 import { XStack, YStack, XGroup, YGroup } from 'tamagui';
 import { Button, Form, Input, Label, Select, ScrollView } from 'tamagui';
-import { H1, H2, H3, H4, SizableText } from 'tamagui';
+import { H1, H2, H3 } from 'tamagui';
+import { Check, ChevronUp, ChevronDown } from '@tamagui/lucide-icons';
 
 export default function DailyReport() {
 
     const [loaded] = useFonts({
         Inter: require("@tamagui/font-inter/otf/Inter-Medium.otf"),
         InterBold: require("@tamagui/font-inter/otf/Inter-Bold.otf"),
-       })
+    })
    
     if (!loaded) {
         return null;
     }
 
     const items = [
-        { name: 'White'},
-        { name: 'Assorted'} 
+        { code: 'W', type: 'White'  },
+        { code: 'A', type: 'Assorted' },
+        { code: 'Co', type: 'Comforter' },
+        { code: 'Cu', type: 'Curtain' },
+        { code: 'B', type: 'Blanket' },
+        { code: 'Bs', type: 'Bedsheet' },
+        { code: 'Pc', type: 'Pillowcase' },
     ]
 
     return (
         <YStack backgroundColor="$blue3" flex={1} justifyContent="center" alignSelf="center" width="100%">
-            <ScrollView marginVertical="$12">
+            <ScrollView marginTop="$12" marginBottom="$6">
             <YStack alignSelf="center" width="80%">
                 <YGroup marginBottom="$4">
                     <H2>Daily Report</H2>
-                    <H3>2023/##/##</H3>
+                    <H3 id="date">2023/##/##</H3>
                 </YGroup>
                 <Form>
                     <Label htmlFor="client_code">Client Code</Label>
                     <Input id="client_code" placeholder="Client Code"></Input>
                     
                     <Label htmlFor="client_name">Client Name</Label>
-                    <XStack id="client_name" justifyContent="space-between">
-                        <Input flex={1} marginRight="$1" placeholder="First Name"></Input>
-                        <Input flex={1} marginLeft="$1" placeholder="Last Name"></Input>
+                    <XStack space="$1.5" id="client_name" justifyContent="space-between">
+                        <Input flex={1} placeholder="First Name"></Input>
+                        <Input flex={1} placeholder="Last Name"></Input>
                     </XStack>
                     
-                    <XStack justifyContent="space-between">
+                    <XStack space="$1.5" justifyContent="space-between">
                         {/*Change to Select later*/}
-                        <YStack flex={1} marginRight="$1">
+                        <YStack flex={1}>
                             <Label htmlFor="laundry_type">Type</Label>
                             <Input id="laundry_type" placeholder="Category"/>
                         </YStack>
-                        <YStack flex={1} marginLeft="$1">
+                        <YStack flex={1}>
                             <Label htmlFor="laundry_kg">KG</Label>
                             <Input id="laundry_kg" placeholder="Weight"/>
                         </YStack>
                     </XStack>
 
                     <Label htmlFor="payment_method">Payment Method</Label>
-                    <XStack flex={1}>
-                    <XGroup backgroundColor="$blue4" id="payment_method">
-                        <XGroup.Item>
-                            <Button>Cash</Button>
-                        </XGroup.Item>
-                        <XGroup.Item>
-                            <Button>GCash</Button>
-                        </XGroup.Item>
-                    </XGroup>
+                    <XStack>
+                        <XGroup backgroundColor="$blue4" id="payment_method">
+                            <XGroup.Item>
+                                <Button>Cash</Button>
+                            </XGroup.Item>
+                            <XGroup.Item>
+                                <Button>GCash</Button>
+                            </XGroup.Item>
+                        </XGroup>
                     </XStack>
                     
                     <Label htmlFor="amount">Amount(Price)</Label>

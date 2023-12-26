@@ -9,6 +9,12 @@ import { TamaguiProvider, Theme } from 'tamagui';
 import Login from './screens/Login';
 import MainMenu from './screens/MainMenu';
 import DailyReport from './screens/DailyReport';
+import SignUp from './screens/SignUp';
+import StatusReport from './screens/StatusReport';
+import BranchTimeIn from './screens/BranchTimeIn';
+import CycleCount from './screens/CycleCount';
+import CheckReceivables from './screens/CheckReceivables';
+import TransferLaundry from './screens/TransferLaundry';
 
 export default function App() {
   const [isThemeToggled, setIsThemeToggled] = useState(false);
@@ -34,9 +40,15 @@ export default function App() {
     <TamaguiProvider config={config}>
       <Theme name={themeName}>
         <View style={styles.container}>
-          {/*<Login isThemeToggled={isThemeToggled} onThemeChange={handleThemeChange} />*/}
+          <Login isThemeToggled={isThemeToggled} onThemeChange={handleThemeChange} />
           {/*<MainMenu />*/}
-          <DailyReport />
+          {/*<DailyReport />*/}
+          {/*<SignUp />*/}
+          {/*<StatusReport />*/}
+          {/*<BranchTimeIn />*/}
+          {/*<CycleCount />*/}
+          {/*<CheckReceivables />*/}
+          {/*<TransferLaundry />*/}
         </View> 
       </Theme>
     </TamaguiProvider>
