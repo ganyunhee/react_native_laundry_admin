@@ -47,12 +47,12 @@ export default function DailyReport() {
                     <XStack space="$1.5" justifyContent="space-between">
                         {/*Change to Select later*/}
                         <YStack flex={1}>
-                            <Label htmlFor="laundry_type">Type</Label>
-                            <Input id="laundry_type" placeholder="Category"/>
+                            <Label htmlFor="type">Type</Label>
+                            <Input id="type" placeholder="Category"/>
                         </YStack>
                         <YStack flex={1}>
-                            <Label htmlFor="laundry_kg">KG</Label>
-                            <Input id="laundry_kg" placeholder="Weight"/>
+                            <Label htmlFor="weight">KG</Label>
+                            <Input id="weight" placeholder="Weight"/>
                         </YStack>
                     </XStack>
 
