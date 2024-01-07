@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { useFonts } from 'expo-font';
 import { StyleSheet, Text, View } from 'react-native';
+
 /* Tamagui Config */
 import config from './tamagui.config';
 import { TamaguiProvider, Theme } from 'tamagui';
+
 /* Screens */
 import Login from './screens/Login';
 import MainMenu from './screens/MainMenu';
